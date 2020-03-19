@@ -16,3 +16,6 @@ find environments/dev/manifests -type f ! -name '*.yaml' -delete
 
 jsonnet -J vendor -m tests/manifests tests/main.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
 find tests/manifests -type f ! -name '*.yaml' -delete
+
+jsonnet -J vendor -m example/manifests example/main.jsonnet | xargs -I{} sh -c 'cat {} | gojsontoyaml > {}.yaml' -- {}
+find example/manifests -type f ! -name '*.yaml' -delete
